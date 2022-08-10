@@ -1,0 +1,53 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Fake News Prediction</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	</head>
+
+<body>
+	<nav class="navbar navbar-expand-lg navbar-light bg-light">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="/">FAKE NEWS PREDICTION</a>
+			<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+				aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			</div>
+	</nav>
+
+
+	<br>
+	<p style=text-align:center>A fake news prediction web application </p>
+	<p style=text-align:center>Enter your text to try it.</p>
+	<br>
+	<div class='container'>
+		 <form action="{{ url_for('predict')}}" method="POST">
+			<div class="col-three-forth text-center col-md-offset-2">
+				<div class="form-group">
+					<textarea class="form-control jTextarea mt-3" id="jTextarea'" rows="5" name="message"
+					 placeholder="Write your text here..." required>{{message}}</textarea>
+
+					<br><br>
+					<button class="btn btn-primary btn-block btn-large" type="submit">Predict</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	<br>
+	<br>
+	{% if prediction == [0]%}
+
+	<h2 style="color:red;">This news is spam/fake📰 </h2>
+	 
+	 {% elif prediction == [1]%}
+				<h2 style="color:green;"><b>This news is real📰</b></h2>
+	{% endif %}
+
+</body>
+
+</html>
